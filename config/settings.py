@@ -8,6 +8,10 @@ Import from this module instead of hardcoding values anywhere else.
 import os
 import sys
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 
 # ---------------------------------------------------------------------------
 # API credentials
