@@ -1,6 +1,6 @@
 """
 
-Implements PromptBuilder — the sole owner of system prompt construction.
+Implements PromptBuilder - the sole owner of system prompt construction.
 
 Design principles applied
 --------------------------
@@ -36,10 +36,10 @@ class PromptBuilder:
 
     The prompt has four sections, assembled in order:
 
-        1. Role & persona       — who the assistant is and how it should behave
-        2. Tool usage rules     — when and how to call tools vs answer directly
-        3. Tool catalogue       — name + description of every registered tool
-        4. Response guidelines  — format, tone, language, and safety rules
+        1. Role & persona       - who the assistant is and how it should behave
+        2. Tool usage rules     - when and how to call tools vs answer directly
+        3. Tool catalogue       - name + description of every registered tool
+        4. Response guidelines  - format, tone, language, and safety rules
 
     Usage
     -----
@@ -61,7 +61,7 @@ class PromptBuilder:
         registry : ToolRegistry
             The populated tool registry.  PromptBuilder reads tool names and
             descriptions from it to build the tool catalogue section.
-            It never executes tools — read-only access only.
+            It never executes tools - read-only access only.
         """
         if not isinstance(registry, ToolRegistry):
             raise TypeError(
@@ -95,7 +95,7 @@ class PromptBuilder:
 
         prompt = "\n\n".join(filter(None, sections))
         logger.debug(
-            "Built system prompt — %d chars, %d tools.",
+            "Built system prompt - %d chars, %d tools.",
             len(prompt),
             len(self._registry),
         )
@@ -106,11 +106,11 @@ class PromptBuilder:
     # ------------------------------------------------------------------
 
     def _role_section(self) -> str:
-        """Section 1 — Role and persona."""
+        """Section 1 - Role and persona."""
         return "## Role\n" + SYSTEM_PROMPT
 
     def _tool_usage_rules_section(self) -> str:
-        """Section 2 — When and how to use tools."""
+        """Section 2 - When and how to use tools."""
         return (
             "## Tool usage rules\n"
             "Follow these rules precisely when deciding whether to use a tool:\n\n"
@@ -123,7 +123,7 @@ class PromptBuilder:
             "   result, reason about it before deciding whether another tool\n"
             "   call is needed.\n\n"
             "4. If a user request can be answered accurately from your own knowledge\n"
-            "   without any tool, answer directly — do not call a tool unnecessarily.\n\n"
+            "   without any tool, answer directly - do not call a tool unnecessarily.\n\n"
             "5. Pass arguments exactly as typed by the user (preserve city names,\n"
             "   language names, file paths, etc.) unless you have a clear reason\n"
             "   to normalise them.\n\n"
@@ -133,7 +133,7 @@ class PromptBuilder:
 
     def _tool_catalogue_section(self) -> str:
         """
-        Section 3 — Human-readable summary of every registered tool.
+        Section 3 - Human-readable summary of every registered tool.
 
         This supplements the machine-readable JSON schemas that Gemini
         receives via the ``tools`` parameter.  The natural-language
@@ -187,7 +187,7 @@ class PromptBuilder:
         return "\n".join(lines).rstrip()
 
     def _response_guidelines_section(self) -> str:
-        """Section 4 — Format, tone, and safety guidelines."""
+        """Section 4 - Format, tone, and safety guidelines."""
         return (
             "## Response guidelines\n"
             "- Reply in the same language the user writes in.\n"

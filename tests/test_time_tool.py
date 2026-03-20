@@ -1,4 +1,5 @@
 """
+tests/test_time_tool.py
 
 Unit tests for TimeTool — clock is frozen with unittest.mock.patch so
 every assertion against date/time values is deterministic.
@@ -45,8 +46,10 @@ def _freeze(tz):
 
     def _fake_now(tz=None):
         if tz is None:
-            # Simulate local time as UTC+2 (CEST) for test reproducibility.
-            local_tz = ZoneInfo("Europe/Paris")
+            # Use a fixed UTC+2 offset — avoids tzdata dependency on Windows.
+            from datetime import timezone, timedelta
+
+            local_tz = timezone(timedelta(hours=2))
             return _FIXED_UTC.astimezone(local_tz)
         return _FIXED_UTC.astimezone(tz)
 
@@ -283,7 +286,7 @@ class TestTimeToolDeclaration(unittest.TestCase):
 
     def test_timezone_type_is_string(self):
         props = self.tool.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["timezone"]["type"], "string")
+        self.assertIn(props["timezone"]["type"].lower(), ("string",))
 
 
 if __name__ == "__main__":

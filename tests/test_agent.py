@@ -97,9 +97,14 @@ def _make_tool(name: str, result: str = "tool_result") -> BaseTool:
                 "name": name,
                 "description": f"Test tool {name}",
                 "parameters": {
-                    "type": "object",
+                    # "type": "object",
+                    "type": "OBJECT",
                     "properties": {
-                        "input": {"type": "string", "description": "Input value."},
+                        "input": {
+                            # "type": "string",
+                            "type": "STRING",
+                            "description": "Input value.",
+                        },
                     },
                     "required": [],
                 },
@@ -126,7 +131,12 @@ def _make_error_tool(name: str, exc: Exception) -> BaseTool:
             return {
                 "name": name,
                 "description": "Broken tool.",
-                "parameters": {"type": "object", "properties": {}, "required": []},
+                "parameters": {
+                    # "type": "object",
+                    "type": "OBJECT",
+                    "properties": {},
+                    "required": [],
+                },
             }
 
     return _E()

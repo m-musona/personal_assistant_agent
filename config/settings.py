@@ -66,7 +66,7 @@ MAX_TOOL_CALLS_PER_TURN: int = int(os.getenv("MAX_TOOL_CALLS_PER_TURN", "5"))
 # System prompt injected at the start of every conversation.
 SYSTEM_PROMPT: str = (
     "You are a helpful and knowledgeable personal assistant. "
-    "You have access to a set of tools — use them whenever they would give "
+    "You have access to a set of tools - use them whenever they would give "
     "a more accurate or up-to-date answer than your own knowledge. "
     "Think step by step, be concise, and always respond in the same "
     "language the user writes in."
@@ -77,18 +77,18 @@ SYSTEM_PROMPT: str = (
 # Tool-specific settings
 # ---------------------------------------------------------------------------
 
-# Weather tool — OpenWeatherMap API key (optional; falls back to wttr.in).
+# Weather tool - OpenWeatherMap API key (optional; falls back to wttr.in).
 OPENWEATHER_API_KEY: str = os.getenv("OPENWEATHER_API_KEY", "")
 
-# Weather tool — unit system: "metric" (°C), "imperial" (°F), or "standard" (K).
+# Weather tool - unit system: "metric" (Celsius), "imperial" (Fareomheit), or "standard" (K).
 WEATHER_UNITS: str = os.getenv("WEATHER_UNITS", "metric")
 
-# FileReaderTool — restrict file reads to this directory.
+# FileReaderTool - restrict file reads to this directory.
 # Defaults to the current working directory; set to an absolute path to lock
 # the agent to a specific folder.
 FILE_READER_BASE_DIR: str = os.getenv("FILE_READER_BASE_DIR", os.getcwd())
 
-# TranslateTool — LibreTranslate endpoint (self-hosted or public mirror).
+# TranslateTool - LibreTranslate endpoint (self-hosted or public mirror).
 LIBRETRANSLATE_URL: str = os.getenv(
     "LIBRETRANSLATE_URL", "https://libretranslate.com/translate"
 )
@@ -111,7 +111,7 @@ LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
 
 
 def get_all() -> dict:
-    """Return all settings as a plain dict — useful for debugging and tests."""
+    """Return all settings as a plain dict - useful for debugging and tests."""
     return {
         "MODEL_NAME": MODEL_NAME,
         "MAX_OUTPUT_TOKENS": MAX_OUTPUT_TOKENS,

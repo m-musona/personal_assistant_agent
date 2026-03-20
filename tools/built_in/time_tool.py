@@ -1,6 +1,6 @@
 """
 
-TimeTool — returns the current date and time, optionally for a named
+TimeTool - returns the current date and time, optionally for a named
 timezone.
 
 Why this tool matters beyond its simplicity
@@ -14,7 +14,7 @@ entire ReAct loop:
   2. Gemini recognises it cannot answer from memory and generates a
      function_call for "time".
   3. Agent dispatches to TimeTool via ToolRegistry.
-  4. TimeTool calls datetime.now(tz) — no network, no side-effects.
+  4. TimeTool calls datetime.now(tz) - no network, no side-effects.
   5. Result flows back as a function_response.
   6. Gemini composes a natural-language answer.
 
@@ -168,7 +168,7 @@ class TimeTool(BaseTool):
         Parameters
         ----------
         args : dict
-            "timezone" (str, optional) — IANA timezone name, abbreviation,
+            "timezone" (str, optional) - IANA timezone name, abbreviation,
             or city name.  Defaults to local system time when absent or
             empty.
 
@@ -263,8 +263,8 @@ class TimeTool(BaseTool):
         Returns
         -------
         (tz, label)
-            tz    : ZoneInfo | None — None means system local time.
-            label : str             — human-readable timezone label.
+            tz    : ZoneInfo | None - None means system local time.
+            label : str             - human-readable timezone label.
         """
         if not tz_arg or tz_arg.lower() in ("local", "here", "mine"):
             return None, "local"

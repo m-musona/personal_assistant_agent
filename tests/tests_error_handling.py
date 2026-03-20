@@ -54,9 +54,14 @@ def _make_tool(name: str, result: str = "ok") -> BaseTool:
                 "name": name,
                 "description": f"Test tool: {name}",
                 "parameters": {
-                    "type": "object",
+                    # "type": "object",
+                    "type": "OBJECT",
                     "properties": {
-                        "input": {"type": "string", "description": "Input."}
+                        "input": {
+                            # "type": "string",
+                            "type": "STRING",
+                            "description": "Input.",
+                        }
                     },
                     "required": ["input"],
                 },
@@ -81,7 +86,8 @@ def _make_error_tool(name: str, exc: Exception) -> BaseTool:
                 "name": name,
                 "description": "Broken tool.",
                 "parameters": {
-                    "type": "object",
+                    # "type": "object",
+                    "type": "OBJECT",
                     "properties": {},
                     "required": [],
                 },

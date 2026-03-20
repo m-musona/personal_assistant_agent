@@ -1,6 +1,6 @@
 """
 
-SearchTool — retrieves a concise summary for a query using two backends
+SearchTool - retrieves a concise summary for a query using two backends
 in a priority cascade:
 
   1. Wikipedia REST API  (primary)
@@ -81,14 +81,14 @@ class SearchTool(BaseTool):
         Parameters
         ----------
         args : dict
-            "query" (str, required) — the topic or question to search for.
-            "language" (str, optional) — Wikipedia language code, default "en".
+            "query" (str, required) - the topic or question to search for.
+            "language" (str, optional) - Wikipedia language code, default "en".
 
         Returns
         -------
         str
             A short summary with source attribution, e.g.:
-            "Python (programming language) — Wikipedia
+            "Python (programming language) - Wikipedia
              Python is a high-level, general-purpose programming language...
              Source: https://en.wikipedia.org/wiki/Python_(programming_language)"
 
@@ -107,7 +107,7 @@ class SearchTool(BaseTool):
             return result
 
         # --- 2. Fall back to DuckDuckGo ---------------------------------
-        logger.debug("Wikipedia found nothing for %r — trying DuckDuckGo.", query)
+        logger.debug("Wikipedia found nothing for %r - trying DuckDuckGo.", query)
         result = self._try_duckduckgo(query)
         if result:
             return result
@@ -257,7 +257,7 @@ class SearchTool(BaseTool):
 
         header = f"{page_title}"
         if description:
-            header += f" — {description}"
+            header += f" - {description}"
 
         return f"{header}\n\n{extract}\n\nSource: {page_url}"
 
@@ -322,7 +322,7 @@ class SearchTool(BaseTool):
         if len(abstract) > MAX_EXTRACT_CHARS:
             abstract = abstract[:MAX_EXTRACT_CHARS].rsplit(" ", 1)[0] + "…"
 
-        lines = [f"{heading} — {source}", "", abstract]
+        lines = [f"{heading} - {source}", "", abstract]
         if url_result:
             lines.append(f"\nSource: {url_result}")
         return "\n".join(lines)
@@ -354,20 +354,20 @@ class SearchTool(BaseTool):
                 # 404 = article not found; callers treat this as "no result"
                 # and fall through to the next backend.
                 raise ToolExecutionError(f"Page not found (HTTP 404): {url}") from exc
-            # 5xx and other HTTP errors are fatal — surface them immediately.
+            # 5xx and other HTTP errors are fatal - surface them immediately.
             raise ToolExecutionError(
                 f"HTTP {exc.code} from search service. Please try again later."
             ) from exc
 
         except urllib.error.URLError as exc:
-            # Network-level failure — fatal, surface immediately.
+            # Network-level failure - fatal, surface immediately.
             raise ToolExecutionError(
                 f"Could not reach the search service: {exc.reason}. "
                 "Check your internet connection."
             ) from exc
 
         except TimeoutError as exc:
-            # Timeout — fatal, surface immediately.
+            # Timeout - fatal, surface immediately.
             raise ToolExecutionError(
                 "The search service timed out. Please try again in a moment."
             ) from exc

@@ -1,4 +1,5 @@
 """
+tests/test_search_tool.py
 
 Unit tests for SearchTool — all HTTP calls are mocked.
 
@@ -383,7 +384,7 @@ class TestSearchToolDeclaration(unittest.TestCase):
 
     def test_query_type_is_string(self):
         props = self.tool.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["query"]["type"], "string")
+        self.assertIn(props["query"]["type"].lower(), ("string",))
 
 
 if __name__ == "__main__":

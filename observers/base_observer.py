@@ -1,6 +1,6 @@
 """
 
-Defines the BaseObserver interface — the contract every observer must satisfy.
+Defines the BaseObserver interface - the contract every observer must satisfy.
 
 Observer Pattern
 ----------------
@@ -9,8 +9,8 @@ react to its state changes (loggers, UI updaters, token counters, dashboards).
 
 The Agent maintains a list of BaseObserver instances. At each significant
 lifecycle event it calls the appropriate notification method on every
-registered observer. Observers react however they like — write to a log,
-update a counter, push to a web socket — without the Agent knowing or caring
+registered observer. Observers react however they like - write to a log,
+update a counter, push to a web socket - without the Agent knowing or caring
 which concrete observers are attached.
 
 Benefits for this project
@@ -73,7 +73,7 @@ class BaseObserver(ABC):
     to create a new observer.  Register the instance with agent.add_observer().
 
     All notification methods receive only serialisable, plain-Python values
-    (str, dict) — never live objects — so observers can safely serialise,
+    (str, dict) - never live objects - so observers can safely serialise,
     log, or transmit event data without coupling to internal Agent types.
 
     Minimal example
@@ -89,7 +89,7 @@ class BaseObserver(ABC):
     """
 
     # ------------------------------------------------------------------
-    # Required methods — subclasses MUST implement these two
+    # Required methods - subclasses MUST implement these two
     # ------------------------------------------------------------------
 
     @abstractmethod
@@ -98,7 +98,7 @@ class BaseObserver(ABC):
         Called immediately after a tool finishes executing.
 
         Invoked for every tool call in the ReAct loop, including those that
-        returned an error string (the error is the result — the observer
+        returned an error string (the error is the result - the observer
         receives it as-is so it can distinguish failures from successes by
         inspecting result.startswith("Error:")).
 
@@ -108,7 +108,7 @@ class BaseObserver(ABC):
             The tool name exactly as registered in ToolRegistry.
         args : dict
             The argument payload that was passed to the tool.
-            A shallow copy is provided — mutating it has no effect.
+            A shallow copy is provided - mutating it has no effect.
         result : str
             The tool's output string, or a structured error message if the
             tool raised ToolExecutionError / ToolArgumentError.
@@ -125,7 +125,7 @@ class BaseObserver(ABC):
         """
         Called once the Agent has a final plain-text reply ready to return.
 
-        This is the last event in a turn — it fires after all tool calls
+        This is the last event in a turn - it fires after all tool calls
         for the turn are complete and the model has produced its closing
         text. It is NOT called for intermediate reasoning steps.
 
@@ -142,7 +142,7 @@ class BaseObserver(ABC):
         """
 
     # ------------------------------------------------------------------
-    # Optional lifecycle hooks — default to safe no-ops
+    # Optional lifecycle hooks - default to safe no-ops
     # ------------------------------------------------------------------
 
     def on_agent_start(self, tool_names: list[str]) -> None:
@@ -176,7 +176,7 @@ class BaseObserver(ABC):
         Called whenever the Agent handles a non-fatal error.
 
         Covers Tier-2 tool errors (ToolNotFoundError, ToolExecutionError,
-        ToolArgumentError) and Tier-3 unexpected exceptions — i.e. every
+        ToolArgumentError) and Tier-3 unexpected exceptions - i.e. every
         error that was caught and converted to an observation string rather
         than propagating.  Fatal Tier-1 API errors are NOT reported here
         because they abort the turn before observers are notified.

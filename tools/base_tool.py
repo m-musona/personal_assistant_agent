@@ -1,6 +1,6 @@
 """
 
-Defines the BaseTool interface — the single contract every tool must satisfy.
+Defines the BaseTool interface - the single contract every tool must satisfy.
 
 Design principles applied
 --------------------------
@@ -25,7 +25,7 @@ class BaseTool(ABC):
     Abstract base class for all agent tools.
 
     Subclass this and implement both abstract methods to create a new tool.
-    Register the instance with ToolRegistry — the agent loop will discover
+    Register the instance with ToolRegistry - the agent loop will discover
     and invoke it automatically with no changes to any other class.
 
     Example
@@ -89,7 +89,7 @@ class BaseTool(ABC):
         str
             The tool's result as a plain string.  This string is sent back to
             the LLM as a function_response so it can reason about the outcome.
-            Always return a string — even on error (raise ToolExecutionError
+            Always return a string - even on error (raise ToolExecutionError
             for errors that the agent should handle, see below).
 
         Raises
@@ -125,7 +125,7 @@ class BaseTool(ABC):
                 },
             }
 
-        The description field is the most important — the LLM reads it to
+        The description field is the most important - the LLM reads it to
         decide whether and how to invoke the tool.  Be specific and concise.
         """
 

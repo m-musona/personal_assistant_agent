@@ -1,31 +1,31 @@
 """
 
-FileReaderTool (custom #2) — reads a local plain-text file and returns its
+FileReaderTool (custom #2) - reads a local plain-text file and returns its
 content to the agent.
 
-Security model — directory traversal prevention
+Security model - directory traversal prevention
 -----------------------------------------------
 Reading arbitrary files on the host filesystem is the canonical example of
 a path-traversal vulnerability. This tool enforces a strict containment
 boundary through three independent, layered checks:
 
-  LAYER 1 — Argument sanitisation
+  LAYER 1 - Argument sanitisation
       filepath is stripped of leading whitespace and null bytes.
       Any argument that is not a non-empty string is rejected immediately
       with ToolArgumentError before the filesystem is touched.
 
-  LAYER 2 — Extension allow-list
+  LAYER 2 - Extension allow-list
       Only files whose names end with an extension in ALLOWED_EXTENSIONS
       may be read. Binary files (executables, images, archives) and
       sensitive plain-text files (.env, .key, .pem, etc.) are blocked by
-      omission — they are simply not on the allow-list.
+      omission - they are simply not on the allow-list.
 
-  LAYER 3 — Canonical path confinement (the primary security gate)
+  LAYER 3 - Canonical path confinement (the primary security gate)
       os.path.realpath() resolves all symlinks and normalises ".." sequences
       BEFORE any filesystem access occurs.  The resolved absolute path is
       then checked with str.startswith() against the resolved BASE_DIR.
-      A path that escapes the base directory — whether through "../../etc/passwd",
-      symlinks, or encoded sequences — will always resolve to a path that
+      A path that escapes the base directory - whether through "../../etc/passwd",
+      symlinks, or encoded sequences - will always resolve to a path that
       does NOT start with BASE_DIR, and is rejected with ToolExecutionError.
 
       Example:
@@ -35,10 +35,10 @@ boundary through three independent, layered checks:
         -> ToolExecutionError: "Access denied: path is outside the allowed directory."
 
       Note: os.path.realpath() is called before the file exists check,
-      so the resolved path is purely a string computation — no filesystem
+      so the resolved path is purely a string computation - no filesystem
       access occurs until the containment check passes.
 
-  LAYER 4 — Post-check existence and type validation
+  LAYER 4 - Post-check existence and type validation
       After the path passes the containment check, the file is verified to
       exist and to be a regular file (not a directory, device, or FIFO).
       This prevents information leakage about the filesystem structure.
@@ -140,7 +140,7 @@ class FileReaderTool(BaseTool):
         Parameters
         ----------
         args : dict
-            "filepath" (str, required) — path to the file, relative to the
+            "filepath" (str, required) - path to the file, relative to the
             base directory or absolute (absolute paths are still checked
             against the base directory).
 
@@ -200,7 +200,7 @@ class FileReaderTool(BaseTool):
         }
 
     # ------------------------------------------------------------------
-    # Layer 1 — Argument sanitisation
+    # Layer 1 - Argument sanitisation
     # ------------------------------------------------------------------
 
     @staticmethod
@@ -238,7 +238,7 @@ class FileReaderTool(BaseTool):
         return cleaned
 
     # ------------------------------------------------------------------
-    # Layers 2 + 3 + 4 — Extension check, path confinement, existence
+    # Layers 2 + 3 + 4 - Extension check, path confinement, existence
     # ------------------------------------------------------------------
 
     def _resolve_and_validate(self, raw_path: str) -> str:
@@ -287,7 +287,7 @@ class FileReaderTool(BaseTool):
 
         # --- Layer 4: existence and type validation --------------------
         if not os.path.exists(resolved):
-            # Use a neutral message — don't reveal whether the path WOULD
+            # Use a neutral message - don't reveal whether the path WOULD
             # be allowed if it existed (information leakage).
             raise ToolExecutionError(
                 f"File not found: {os.path.relpath(resolved, _RESOLVED_BASE_DIR)!r}. "

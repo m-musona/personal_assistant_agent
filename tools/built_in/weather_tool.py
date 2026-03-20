@@ -1,6 +1,6 @@
 """
 
-WeatherTool — fetches current weather for a city using wttr.in (no API key
+WeatherTool - fetches current weather for a city using wttr.in (no API key
 required) with an optional fallback to OpenWeatherMap when
 OPENWEATHER_API_KEY is set in settings.
 

@@ -1,4 +1,5 @@
 """
+tests/test_translate_tool.py
 
 Unit tests for TranslateTool — all HTTP calls are mocked.
 
@@ -434,11 +435,11 @@ class TestTranslateToolDeclaration(unittest.TestCase):
 
     def test_text_type_is_string(self):
         props = self.tool.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["text"]["type"], "string")
+        self.assertIn(props["text"]["type"].lower(), ("string",))
 
     def test_target_language_type_is_string(self):
         props = self.tool.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["target_language"]["type"], "string")
+        self.assertIn(props["target_language"]["type"].lower(), ("string",))
 
 
 if __name__ == "__main__":

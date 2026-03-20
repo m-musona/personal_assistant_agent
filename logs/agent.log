@@ -294,3 +294,58 @@ Source: https://en.wikipedia.org/wiki/BTS
 08:50:38 [INFO    ] agent.agent: Turn complete. MemoryManager: 4 groups, 12 turns, cap=20
 08:50:53 [INFO    ] __main__: Agent shut down cleanly.
 08:50:53 [INFO    ] __main__: Session ended.
+18:28:01 [INFO    ] __main__: Starting Personal Assistant Agent.
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'calculator'
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'weather'
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'search'
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'time'
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'translate'
+18:28:01 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+18:28:01 [DEBUG   ] __main__: Registered tool: 'file_reader'
+18:28:01 [INFO    ] __main__: Registry ready - 6 tools: calculator, file_reader, search, time, translate, weather
+18:28:01 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+18:28:01 [DEBUG   ] agent.prompt_builder: Built system prompt - 5776 chars, 6 tools.
+18:28:01 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+18:28:01 [INFO    ] agent.agent: GenerativeModel ready -- 6 tool declaration(s) attached.
+18:28:01 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+18:28:01 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+18:28:01 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+18:28:17 [INFO    ] agent.agent: User input -- 34 chars.
+18:28:17 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=34
+18:28:17 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+18:28:19 [INFO    ] agent.agent: Tool call 1/5 -- name='translate' args={'text': 'hello', 'target_language': 'Japanese'}
+18:28:19 [DEBUG   ] agent.memory_manager: add_raw_turn role='model' parts=1
+18:28:19 [INFO    ] tools.tool_registry: Executing tool 'translate' with args: {'text': 'hello', 'target_language': 'Japanese'}
+18:28:20 [INFO    ] tools.custom.translate_tool: MyMemory translated 5 chars -> 'ja'
+18:28:20 [DEBUG   ] tools.tool_registry: Tool 'translate' returned: Translation (en -> ja) via MyMemory:
+"こんにちは"
+18:28:20 [DEBUG   ] agent.agent: Tool 'translate' succeeded: Translation (en -> ja) via MyMemory:
+"こんにちは"
+18:28:20 [DEBUG   ] agent.memory_manager: add_raw_turn role='function' parts=1
+18:28:20 [DEBUG   ] agent.agent: Tool exchange recorded. MemoryManager: 1 groups, 3 turns, cap=20
+18:28:20 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=1).
+18:28:20 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=50
+18:28:20 [INFO    ] agent.agent: Turn complete. MemoryManager: 1 groups, 4 turns, cap=20
+18:28:47 [INFO    ] agent.agent: User input -- 27 chars.
+18:28:47 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=27
+18:28:47 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+18:28:48 [INFO    ] agent.agent: Tool call 1/5 -- name='translate' args={'text': 'hello', 'target_language': 'Japanese'}
+18:28:48 [DEBUG   ] agent.memory_manager: add_raw_turn role='model' parts=1
+18:28:48 [INFO    ] tools.tool_registry: Executing tool 'translate' with args: {'text': 'hello', 'target_language': 'Japanese'}
+18:28:48 [INFO    ] tools.custom.translate_tool: MyMemory translated 5 chars -> 'ja'
+18:28:48 [DEBUG   ] tools.tool_registry: Tool 'translate' returned: Translation (en -> ja) via MyMemory:
+"こんにちは"
+18:28:48 [DEBUG   ] agent.agent: Tool 'translate' succeeded: Translation (en -> ja) via MyMemory:
+"こんにちは"
+18:28:48 [DEBUG   ] agent.memory_manager: add_raw_turn role='function' parts=1
+18:28:48 [DEBUG   ] agent.agent: Tool exchange recorded. MemoryManager: 2 groups, 7 turns, cap=20
+18:28:48 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=1).
+18:28:49 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=49
+18:28:49 [INFO    ] agent.agent: Turn complete. MemoryManager: 2 groups, 8 turns, cap=20
+18:29:44 [INFO    ] __main__: Agent shut down cleanly.
+18:29:44 [INFO    ] __main__: Session ended.

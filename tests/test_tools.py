@@ -34,6 +34,7 @@ Running
 
 from __future__ import annotations
 
+import pytest
 import json
 import os
 import tempfile
@@ -872,13 +873,30 @@ class TestFileReaderTool(unittest.TestCase):
         outside = tempfile.NamedTemporaryFile(suffix=".txt", delete=False, mode="w")
         outside.write("outside")
         outside.close()
+
         link = os.path.join(self.tmpdir, "link.txt")
-        os.symlink(outside.name, link)
+
+        # --- Windows Permission Fix Start ---
+        try:
+            os.symlink(outside.name, link)
+        except OSError as e:
+            # Check if it's the specific Windows privilege error
+            if getattr(e, "winerror", None) == 1314:
+                os.unlink(outside.name)  # Clean up the temp file before skipping
+                pytest.skip(
+                    "Skipping symlink test: User lacks SeCreateSymbolicLinkPrivilege on Windows."
+                )
+            raise e
+        # --- Windows Permission Fix End ---
+
         try:
             with self.assertRaises(ToolExecutionError) as ctx:
                 self._run("link.txt")
             self.assertIn("outside the permitted directory", str(ctx.exception))
         finally:
+            # Clean up the link (if created) and the temp file
+            if os.path.exists(link):
+                os.unlink(link)
             os.unlink(outside.name)
 
     def test_sibling_prefix_attack_blocked(self) -> None:

@@ -1,6 +1,6 @@
 """
 
-LoggerObserver — a concrete BaseObserver that writes a structured,
+LoggerObserver - a concrete BaseObserver that writes a structured,
 timestamped session log to logs/session.log (and optionally to the
 Python logging system).
 
@@ -15,7 +15,7 @@ by a type tag and payload:
     2025-06-20 14:32:06 [RESPONSE  ] "The answer is 294."
     2025-06-20 14:32:10 [TURN      ] user="Translate hello to Japanese"
     2025-06-20 14:32:11 [TOOL CALL ] translate(text='hello', target_language='ja') -> "Translation (en -> ja)..."
-    2025-06-20 14:32:11 [RESPONSE  ] "In Japanese, "hello" is "こんにちは" (Konnichiwa)."
+    2025-06-20 14:32:11 [RESPONSE  ] "In Japanese, "hello" is "JAPANESE_SYMBOLS" (Konnichiwa)."
     2025-06-20 14:32:15 [ERROR     ] context=tool:weather  error="City 'Atlantis' not found."
     2025-06-20 14:32:20 [RESET     ] session cleared
     2025-06-20 14:35:00 [SESSION END] turns=4  tool_calls=3  errors=1
@@ -294,7 +294,7 @@ class LoggerObserver(BaseObserver):
             try:
                 self._fh.write(text)
             except OSError:
-                pass  # Best-effort separator — don't raise for decorative lines.
+                pass  # Best-effort separator - don't raise for decorative lines.
 
     # ------------------------------------------------------------------
     # Introspection

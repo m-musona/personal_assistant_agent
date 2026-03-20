@@ -1,10 +1,9 @@
 """
-
 Entry point and CLI for the Personal Assistant Agent.
 
 Responsibilities
 ----------------
-This is the composition root — the only file in the project that:
+This is the composition root - the only file in the project that:
   - names concrete tool classes and registers them
   - names the concrete observer and attaches it
   - owns the read-eval-print loop
@@ -23,19 +22,19 @@ Startup sequence
 
 REPL input handling
 -------------------
-  /help     — print command reference
-  /tools    — list registered tools and their descriptions
-  /history  — summarise conversation memory
-  /reset    — wipe history, start a new session
-  /quit     — exit cleanly (also Ctrl+C or Ctrl+D at any point)
-  <blank>   — ignored, re-prompt
-  anything else — forwarded to agent.chat(); reply is printed
+  /help     - print command reference
+  /tools    - list registered tools and their descriptions
+  /history  - summarise conversation memory
+  /reset    - wipe history, start a new session
+  /quit     - exit cleanly (also Ctrl+C or Ctrl+D at any point)
+  <blank>   - ignored, re-prompt
+  anything else - forwarded to agent.chat(); reply is printed
 
 Interrupt handling
 ------------------
 KeyboardInterrupt is caught in two places:
-  1. At the input() call — user pressed Ctrl+C while typing.
-  2. Around agent.chat() — user pressed Ctrl+C during a long API call.
+  1. At the input() call - user pressed Ctrl+C while typing.
+  2. Around agent.chat() - user pressed Ctrl+C during a long API call.
 Both lead to a clean "Goodbye!" message and graceful shutdown.
 EOFError (Ctrl+D, piped input exhausted) is treated identically.
 """
@@ -48,7 +47,7 @@ import sys
 import textwrap
 
 # ---------------------------------------------------------------------------
-# Settings — imported first; exits immediately if GEMINI_API_KEY is unset.
+# Settings - imported first; exits immediately if GEMINI_API_KEY is unset.
 # ---------------------------------------------------------------------------
 from config.settings import FILE_READER_BASE_DIR, LOG_DIR, LOG_LEVEL, MODEL_NAME
 
@@ -84,12 +83,12 @@ from observers.logger_observer import LoggerObserver
 
 _MIN_PYTHON = (3, 9)  # zoneinfo requires 3.9+
 
-_DIVIDER = "─" * 56
-_WIDE_DIVIDER = "═" * 56
+_DIVIDER = "-" * 56
+_WIDE_DIVIDER = "=" * 56
 
 _BANNER = f"""\
 {_WIDE_DIVIDER}
-  Personal Assistant Agent  ·  Gemini {MODEL_NAME}
+  Personal Assistant Agent  -  Gemini {MODEL_NAME}
   Type /help for commands, or just start chatting.
 {_WIDE_DIVIDER}"""
 
@@ -164,7 +163,7 @@ def _preflight() -> None:
       - Python version ≥ _MIN_PYTHON (zoneinfo requires 3.9+)
 
     Note: GEMINI_API_KEY presence is validated by config/settings.py on
-    import — if it is missing the process has already exited.
+    import - if it is missing the process has already exited.
     """
     if sys.version_info < _MIN_PYTHON:
         print(
@@ -190,7 +189,7 @@ def build_registry() -> ToolRegistry:
     To add a new tool:
       1. Import its class at the top of this file.
       2. Add  MyNewTool()  to the list below.
-      That is all — nothing else in the codebase changes.
+      That is all - nothing else in the codebase changes.
 
     Returns
     -------
@@ -215,7 +214,7 @@ def build_registry() -> ToolRegistry:
         logger.debug("Registered tool: %r", tool.name)
 
     logger.info(
-        "Registry ready — %d tools: %s",
+        "Registry ready - %d tools: %s",
         len(registry),
         ", ".join(registry.tool_names()),
     )
@@ -252,10 +251,10 @@ def _print_history(agent: Agent) -> None:
         # parts[0] may be a text part or a structured part (function call).
         raw_text = parts[0].get("text", "") if parts else ""
         if raw_text:
-            preview = raw_text[:120] + ("…" if len(raw_text) > 120 else "")
+            preview = raw_text[:120] + ("..." if len(raw_text) > 120 else "")
             print(f"Last [{role}]: {preview}")
         else:
-            print(f"Last [{role}]: (structured turn — function call or response)")
+            print(f"Last [{role}]: (structured turn - function call or response)")
     print()
 
 
@@ -275,14 +274,14 @@ def run_repl(agent: Agent, registry: ToolRegistry) -> None:
     """
     Run the interactive command-line loop until the user quits.
 
-    This function never raises — all exceptions from agent.chat() are caught
+    This function never raises - all exceptions from agent.chat() are caught
     and displayed gracefully so the loop can continue. KeyboardInterrupt and
     EOFError are caught at both the input() and the chat() call sites.
 
     Parameters
     ----------
-    agent    : Agent         — fully initialised assistant
-    registry : ToolRegistry  — used only for /tools display
+    agent    : Agent         - fully initialised assistant
+    registry : ToolRegistry  - used only for /tools display
     """
     print(_BANNER)
     print(f"\nFile reader sandbox: {FILE_READER_BASE_DIR}")
@@ -302,7 +301,7 @@ def run_repl(agent: Agent, registry: ToolRegistry) -> None:
             print("\nGoodbye!")
             break
 
-        # Blank line — re-prompt silently.
+        # Blank line - re-prompt silently.
         if not user_input:
             continue
 
@@ -359,7 +358,7 @@ def _shutdown(agent: Agent) -> None:
     Perform graceful cleanup before the process exits.
 
     Closes the LoggerObserver (flushes and writes a session-end marker) and
-    logs the shutdown event. Errors here are swallowed — cleanup must not
+    logs the shutdown event. Errors here are swallowed - cleanup must not
     prevent the process from exiting.
     """
     try:
@@ -379,7 +378,7 @@ def _shutdown(agent: Agent) -> None:
 def main() -> None:
     """
     Full startup sequence:
-      preflight → logging → registry → agent → observer → REPL → shutdown.
+      preflight -> logging -> registry -> agent -> observer -> REPL -> shutdown.
     """
     _preflight()
     _configure_logging()
@@ -388,7 +387,7 @@ def main() -> None:
     registry = build_registry()
     agent = Agent(registry)
 
-    # Structured session log — one file per process run, sessions separated
+    # Structured session log - one file per process run, sessions separated
     # by markers.  The observer is attached after Agent.__init__ so
     # on_agent_start fires with the correct tool list.
     observer = LoggerObserver()
@@ -399,7 +398,7 @@ def main() -> None:
     try:
         run_repl(agent, registry)
     finally:
-        # Always runs — whether the user typed /quit, Ctrl+C, or the
+        # Always runs - whether the user typed /quit, Ctrl+C, or the
         # process is killed. Ensures the log is flushed and closed.
         _shutdown(agent)
 

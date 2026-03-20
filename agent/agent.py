@@ -33,39 +33,11 @@ Retry logic
 Tier-1 API errors support a configurable number of retries with
 exponential back-off before the GeminiAPIError is raised.
 
-ReAct loop overview
---------------------
-1. Receive user input.
-2. Send to Gemini via ChatSession.
-3. Inspect the response:
-   a. function_call present -> dispatch to ToolRegistry (Act),
-      send tool result back as function_response (Observe), go to 3.
-   b. Plain text present    -> return to caller. Done.
-4. Safety valve: if MAX_TOOL_CALLS_PER_TURN is reached before a text
-   response, force-stop and return a graceful fallback.
-
-Memory integration
-------------------
-Every step of the ReAct loop is recorded in MemoryManager so the full
-conversation -- including intermediate tool calls and their results --
-is preserved across turns and survives a session reset:
-
-    User turn         -> add_turn("user", text)
-    Model function_call -> add_raw_turn({"role": "model", "parts": [{"function_call": ...}]})
-    Tool result       -> add_raw_turn({"role": "function", "parts": [{"function_response": ...}]})
-    Model final reply -> add_turn("model", text)
-
-On reset(), a fresh ChatSession is seeded with the full history from
-MemoryManager so Gemini retains context across session restarts.
-
-
 Design principles applied
 --------------------------
-SRP -- Agent orchestrates; it does not implement tools, memory, or prompts.
-DIP -- Agent depends on abstractions (BaseTool via ToolRegistry), never on
-       concrete tool classes.
-OCP -- New tools, observers, or memory strategies plug in without touching
-       this class.
+SRP -- Agent orchestrates; no tool logic, no prompt strings, no storage.
+DIP -- Depends on ToolRegistry abstraction, never on concrete tool classes.
+OCP -- New tools, observers, memory strategies plug in without changing this.
 """
 
 from __future__ import annotations
@@ -79,6 +51,7 @@ from google.generativeai.types import GenerationConfig
 
 from agent.memory_manager import MemoryManager
 from agent.prompt_builder import PromptBuilder
+from observers.base_observer import BaseObserver, ObserverError
 from config.settings import (
     GEMINI_API_KEY,
     MAX_OUTPUT_TOKENS,
@@ -90,7 +63,6 @@ from tools.base_tool import ToolArgumentError, ToolExecutionError
 from tools.tool_registry import ToolNotFoundError, ToolRegistry
 
 logger = logging.getLogger(__name__)
-
 
 # Retry settings for Tier-1 API failures.
 _API_MAX_RETRIES: int = 3
@@ -155,7 +127,7 @@ class Agent:
         self._registry = registry
         self._memory = MemoryManager()
         self._prompt_builder = PromptBuilder(registry)
-        self._observers: list = []
+        self._observers: list[BaseObserver] = []
 
         # 1. Configure Gemini SDK globally (process-wide credential store).
         genai.configure(api_key=GEMINI_API_KEY)
@@ -190,6 +162,7 @@ class Agent:
             history=[],
         )
         logger.info("ChatSession opened -- agent ready.")
+        self._notify_observers_start()
 
     # ------------------------------------------------------------------
     # Public API
@@ -218,6 +191,7 @@ class Agent:
 
         logger.info("User input -- %d chars.", len(user_input))
         self._memory.add_turn("user", user_input)
+        self._notify_observers_turn_start(user_input)
 
         try:
             reply = self._react_loop(user_input)
@@ -485,11 +459,13 @@ class Agent:
             logger.warning(
                 "ToolNotFoundError -- name=%r available=[%s]", name, available
             )
-            return (
+            msg = (
                 f"Error: no tool named '{name}' exists. "
                 f"Available tools are: {available}. "
                 "Please use one of the available tool names exactly."
             )
+            self._notify_observers_error(msg, f"tool:{name}")
+            return msg
 
         except ToolArgumentError as exc:
             # Tier 2: Gemini's generated args don't match the schema.
@@ -501,30 +477,36 @@ class Agent:
             )
             declaration = self._registry.get_tool(name).get_declaration()
             required = declaration.get("parameters", {}).get("required", [])
-            return (
+            msg = (
                 f"Error: invalid arguments for tool '{name}'. "
                 f"Details: {exc}. "
                 f"Required parameters are: {required}. "
                 "Please retry with correct arguments."
             )
+            self._notify_observers_error(str(exc), f"tool:{name}")
+            return msg
 
         except ToolExecutionError as exc:
             # Tier 2: Tool ran but encountered a recoverable runtime failure.
             logger.warning("ToolExecutionError -- tool=%r error=%s", name, exc)
-            return (
+            msg = (
                 f"Error: the tool '{name}' encountered a problem. "
                 f"Details: {exc}. "
                 "You may want to try different inputs or let the user know."
             )
+            self._notify_observers_error(str(exc), f"tool:{name}")
+            return msg
 
         except Exception as exc:
             # Tier 3: Unexpected bug in tool code -- log full traceback.
             logger.exception("Unexpected error in tool %r with args %s", name, args)
-            return (
+            msg = (
                 f"Error: an unexpected error occurred while running '{name}'. "
                 f"Details: {exc}. "
                 "Please inform the user that this tool is temporarily unavailable."
             )
+            self._notify_observers_error(str(exc), f"tool:{name}")
+            return msg
 
     # ------------------------------------------------------------------
     # Gemini message helper
@@ -568,6 +550,7 @@ class Agent:
 
     def reset(self) -> None:
         """Clear conversation history and open a fresh ChatSession."""
+        self._notify_observers_reset()
         self._memory.clear()
         self._session = self._model.start_chat(
             enable_automatic_function_calling=False,
@@ -585,27 +568,82 @@ class Agent:
         logger.info("Session restored from memory -- %d turns loaded.", len(history))
 
     # ------------------------------------------------------------------
-    # Observer support (Phase 6 hooks -- safe no-ops until wired)
+    # Observer registration and notification
     # ------------------------------------------------------------------
 
-    def add_observer(self, observer: object) -> None:
-        """Register an observer for on_tool_call / on_response events."""
+    def add_observer(self, observer: BaseObserver) -> None:
+        """
+        Register an observer to receive agent lifecycle events.
+
+        The observer must be a BaseObserver subclass. It will receive
+        on_agent_start() immediately upon registration if the agent is
+        already running (i.e. registered after __init__).
+
+        Parameters
+        ----------
+        observer : BaseObserver
+            Concrete observer instance.
+        """
+        if not isinstance(observer, BaseObserver):
+            raise TypeError(
+                f"Expected a BaseObserver instance, got "
+                f"{type(observer).__name__!r}."
+            )
         self._observers.append(observer)
         logger.debug("Observer registered: %r", observer)
 
-    def _notify_observers_tool(self, name: str, args: dict, result: str) -> None:
-        for observer in self._observers:
+    def _notify_observers_start(self) -> None:
+        """Notify all observers that the agent has initialised."""
+        tool_names = self._registry.tool_names()
+        for obs in self._observers:
             try:
-                observer.on_tool_call(name, args, result)
+                obs.on_agent_start(tool_names)
+            except ObserverError:
+                logger.exception(
+                    "Observer %r raised ObserverError in on_agent_start.", obs
+                )
             except Exception:
+                logger.exception("Unexpected error in observer %r on_agent_start.", obs)
+
+    def _notify_observers_turn_start(self, user_input: str) -> None:
+        """Notify all observers that a new user turn has begun."""
+        for obs in self._observers:
+            try:
+                obs.on_turn_start(user_input)
+            except (ObserverError, Exception):
+                logger.exception("Observer error in on_turn_start.")
+
+    def _notify_observers_tool(self, name: str, args: dict, result: str) -> None:
+        """Notify all registered observers of a completed tool call."""
+        for obs in self._observers:
+            try:
+                obs.on_tool_call(name, dict(args), result)
+            except (ObserverError, Exception):
                 logger.exception("Observer error in on_tool_call.")
 
     def _notify_observers_response(self, text: str) -> None:
-        for observer in self._observers:
+        """Notify all registered observers of the final text response."""
+        for obs in self._observers:
             try:
-                observer.on_response(text)
-            except Exception:
+                obs.on_response(text)
+            except (ObserverError, Exception):
                 logger.exception("Observer error in on_response.")
+
+    def _notify_observers_error(self, error: str, context: str) -> None:
+        """Notify all registered observers of a handled error."""
+        for obs in self._observers:
+            try:
+                obs.on_error(error, context)
+            except (ObserverError, Exception):
+                logger.exception("Observer error in on_error.")
+
+    def _notify_observers_reset(self) -> None:
+        """Notify all registered observers that the session is being reset."""
+        for obs in self._observers:
+            try:
+                obs.on_agent_reset()
+            except (ObserverError, Exception):
+                logger.exception("Observer error in on_agent_reset.")
 
     # ------------------------------------------------------------------
     # Introspection

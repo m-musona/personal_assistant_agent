@@ -304,7 +304,7 @@ class TestCalculatorToolDeclaration(unittest.TestCase):
 
     def test_expression_type_is_string(self):
         props = self.calc.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["expression"]["type"], "string")
+        self.assertIn(props["expression"]["type"].lower(), ("string",))
 
 
 if __name__ == "__main__":

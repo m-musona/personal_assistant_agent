@@ -1,6 +1,6 @@
 """
 
-Implements the ToolRegistry — a Factory/Registry that manages all tools
+Implements the ToolRegistry - a Factory/Registry that manages all tools
 available to the agent.
 
 Design principles applied
@@ -15,7 +15,7 @@ SRP (Single Responsibility Principle)
     dispatch execution.  It knows nothing about the LLM, memory, or prompts.
 
 OCP (Open/Closed Principle)
-    Registering a new tool is one call — registry.register(MyTool()).
+    Registering a new tool is one call - registry.register(MyTool()).
     No existing code changes.  The agent loop, the prompt builder, and every
     other class remain untouched.
 

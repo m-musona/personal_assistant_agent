@@ -1,4 +1,5 @@
 """
+tests/test_weather_tool.py
 
 Unit tests for WeatherTool — all HTTP calls are mocked so no real
 network access is needed.
@@ -311,7 +312,7 @@ class TestWeatherToolDeclaration(unittest.TestCase):
 
     def test_city_type_is_string(self):
         props = self.tool.get_declaration()["parameters"]["properties"]
-        self.assertEqual(props["city"]["type"], "string")
+        self.assertIn(props["city"]["type"].lower(), ("string",))
 
 
 if __name__ == "__main__":

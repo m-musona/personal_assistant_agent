@@ -135,7 +135,7 @@ class TestNoIfElifToolChains(unittest.TestCase):
 
     def _source(self, path: str) -> str:
         """Read and return the source of a project file."""
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             return f.read()
 
     def test_agent_has_no_tool_name_if_elif(self) -> None:
@@ -206,33 +206,33 @@ class TestSOLIDPrinciples(unittest.TestCase):
 
     def test_srp_memory_manager_has_no_genai(self) -> None:
         """MemoryManager must not import or reference the Gemini SDK."""
-        with open("agent/memory_manager.py") as f:
+        with open("agent/memory_manager.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotIn("genai", src)
         self.assertNotIn("GenerativeModel", src)
 
     def test_srp_memory_manager_has_no_tool_registry(self) -> None:
         """MemoryManager must not reference ToolRegistry."""
-        with open("agent/memory_manager.py") as f:
+        with open("agent/memory_manager.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotIn("ToolRegistry", src)
 
     def test_srp_prompt_builder_has_no_send_message(self) -> None:
         """PromptBuilder must not call the Gemini API directly."""
-        with open("agent/prompt_builder.py") as f:
+        with open("agent/prompt_builder.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotIn("send_message", src)
         self.assertNotIn("genai.configure", src)
 
     def test_srp_tool_registry_has_no_memory_manager(self) -> None:
         """ToolRegistry must not reference MemoryManager."""
-        with open("tools/tool_registry.py") as f:
+        with open("tools/tool_registry.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotIn("MemoryManager", src)
 
     def test_srp_base_tool_has_no_agent_imports(self) -> None:
         """BaseTool must not import Agent, MemoryManager, or ToolRegistry."""
-        with open("tools/base_tool.py") as f:
+        with open("tools/base_tool.py", encoding="utf-8") as f:
             src = f.read()
         # Parse the AST and check import statements only — not prose in docstrings
         tree = ast.parse(src)
@@ -268,7 +268,10 @@ class TestSOLIDPrinciples(unittest.TestCase):
         ]
         violations = []
         for root, _, files in os.walk("."):
-            if any(x in root for x in ["__pycache__", "tests", ".git"]):
+            if any(
+                x in root
+                for x in ["__pycache__", "tests", ".git", "venv", "site-packages"]
+            ):
                 continue
             for fname in files:
                 if not fname.endswith(".py"):
@@ -276,7 +279,7 @@ class TestSOLIDPrinciples(unittest.TestCase):
                 fpath = os.path.join(root, fname)
                 if os.path.basename(fpath) == "main.py":
                     continue
-                with open(fpath) as f:
+                with open(fpath, encoding="utf-8") as f:
                     content = f.read()
                 try:
                     tree = ast.parse(content)
@@ -350,7 +353,7 @@ class TestSOLIDPrinciples(unittest.TestCase):
 
     def test_dip_agent_does_not_import_concrete_tools(self) -> None:
         """agent.py must not import any concrete tool module."""
-        with open("agent/agent.py") as f:
+        with open("agent/agent.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotRegex(
             src,
@@ -360,7 +363,7 @@ class TestSOLIDPrinciples(unittest.TestCase):
 
     def test_dip_agent_does_not_import_concrete_observers(self) -> None:
         """agent.py must not import LoggerObserver."""
-        with open("agent/agent.py") as f:
+        with open("agent/agent.py", encoding="utf-8") as f:
             src = f.read()
         self.assertNotIn("LoggerObserver", src)
 
@@ -711,7 +714,7 @@ class TestCodeQuality(unittest.TestCase):
 
     def _audit(self, path: str) -> list[str]:
         """Return a list of issue strings for the given source file."""
-        with open(path) as f:
+        with open(path, encoding="utf-8") as f:
             src = f.read()
         tree = ast.parse(src, path)
         issues = []
@@ -1026,7 +1029,7 @@ class TestSupportingInfrastructure(unittest.TestCase):
             obs.on_tool_call("calc", {"expression": "2+2"}, "2+2=4")
             obs.on_response("The answer is 4.")
             obs.close()
-            with open(log_path) as f:
+            with open(log_path, encoding="utf-8") as f:
                 content = f.read()
             self.assertIn("SESSION", content)
             self.assertIn("TURN", content)

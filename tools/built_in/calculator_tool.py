@@ -7,16 +7,16 @@ Security model
 Raw eval() on arbitrary user/LLM input is a code-execution vulnerability.
 This tool uses a two-layer approach instead:
 
-  Layer 1 — ast.parse() with a strict AST whitelist.
+  Layer 1 - ast.parse() with a strict AST whitelist.
     The expression is compiled to an AST. Every node type is checked against
     _ALLOWED_NODE_TYPES. Any node not on the whitelist (function calls,
     attribute access, imports, comprehensions, etc.) raises ToolArgumentError
     before a single byte of the expression is evaluated.
 
-  Layer 2 — eval() inside a locked-down globals/locals dict.
+  Layer 2 - eval() inside a locked-down globals/locals dict.
     Even after the AST is verified, eval() runs with:
-      globals={"__builtins__": {}}   — no builtins at all
-      locals=_SAFE_NAMES             — only math constants and functions
+      globals={"__builtins__": {}}   - no builtins at all
+      locals=_SAFE_NAMES             - only math constants and functions
 
     This means even if a malicious expression somehow survived the AST
     check, it would hit a NameError rather than executing arbitrary code.
@@ -56,7 +56,7 @@ _ALLOWED_NODE_TYPES: frozenset[type] = frozenset(
         ast.Expr,
         # Literals
         ast.Constant,
-        # Collections (for atan2(y, x) tuple-like calls — excluded; listed for clarity)
+        # Collections (for atan2(y, x) tuple-like calls - excluded; listed for clarity)
         # Operators
         ast.BinOp,
         ast.UnaryOp,
@@ -322,7 +322,7 @@ class CalculatorTool(BaseTool):
         Raises ToolExecutionError for math-domain errors.
         """
         try:
-            result = eval(  # noqa: S307 — intentional; AST validated above
+            result = eval(  # noqa: S307 - intentional; AST validated above
                 expression,
                 {"__builtins__": {}},
                 _SAFE_NAMES,

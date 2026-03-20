@@ -1,5 +1,4 @@
 """
-agent/memory_manager.py
 
 Implements MemoryManager -- the agent's short-term conversational memory.
 

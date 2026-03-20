@@ -1,14 +1,14 @@
 """
 
-TranslateTool (custom #1) — translates text using a two-backend cascade:
+TranslateTool (custom #1) - translates text using a two-backend cascade:
 
-  Backend 1 — MyMemory  (primary, no key required)
+  Backend 1 - MyMemory  (primary, no key required)
       Free REST API from Translated.com. No registration needed.
       Endpoint: https://api.mymemory.translated.net/get
       Limit: 500 words/day anonymous, 1 000 words/day with a registered email.
       Returns the translated string and a quality match score.
 
-  Backend 2 — LibreTranslate  (fallback, configurable)
+  Backend 2 - LibreTranslate  (fallback, configurable)
       Open-source, self-hostable. Public instances exist but may be throttled.
       Endpoint: LIBRETRANSLATE_URL from config/settings.py
       Activated automatically when MyMemory returns an error response or when
@@ -20,7 +20,7 @@ Architecture notes
       The two backends are implemented as private methods (_translate_mymemory,
       _translate_libretranslate) behind a single execute() entry point.
       Adding a third backend (DeepL, Argos) means adding one method and one
-      entry in the cascade — zero changes to the Agent, ToolRegistry, or
+      entry in the cascade - zero changes to the Agent, ToolRegistry, or
       PromptBuilder.
 
   Language normalisation
@@ -179,9 +179,9 @@ class TranslateTool(BaseTool):
         Parameters
         ----------
         args : dict
-            "text"            (str, required) — the text to translate.
-            "target_language" (str, required) — language name or ISO code.
-            "source_language" (str, optional) — source language (default: auto).
+            "text"            (str, required) - the text to translate.
+            "target_language" (str, required) - language name or ISO code.
+            "source_language" (str, optional) - source language (default: auto).
 
         Returns
         -------
@@ -205,7 +205,7 @@ class TranslateTool(BaseTool):
             logger.info("MyMemory translated %d chars -> %r", len(text), target_code)
             return result
         except ToolExecutionError as exc:
-            logger.warning("MyMemory failed (%s) — trying LibreTranslate.", exc)
+            logger.warning("MyMemory failed (%s) - trying LibreTranslate.", exc)
 
         # --- Backend 2: LibreTranslate ----------------------------------
         result = self._translate_libretranslate(text, target_code, source_code)
@@ -329,8 +329,8 @@ class TranslateTool(BaseTool):
             # Check against the union of alias values for validation.
             if code in _MYMEMORY_SUPPORTED or code == "auto":
                 return code
-            # Allow unknown short codes through — the API will validate.
-            logger.debug("Unrecognised language code %r — passing through.", lang)
+            # Allow unknown short codes through - the API will validate.
+            logger.debug("Unrecognised language code %r - passing through.", lang)
             return code
 
         # Full name lookup.
@@ -356,8 +356,8 @@ class TranslateTool(BaseTool):
 
         Endpoint: GET https://api.mymemory.translated.net/get
         Parameters:
-            q      — text to translate
-            langpair — "source|target" (use "auto|target" for auto-detect)
+            q      - text to translate
+            langpair - "source|target" (use "auto|target" for auto-detect)
 
         MyMemory error signals
         ----------------------
