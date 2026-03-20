@@ -1,4 +1,5 @@
 """
+tools/built_in/search_tool.py
 
 SearchTool — retrieves a concise summary for a query using two backends
 in a priority cascade:
@@ -67,6 +68,7 @@ class SearchTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "search"
 
     # ------------------------------------------------------------------
@@ -118,6 +120,7 @@ class SearchTool(BaseTool):
         )
 
     def get_declaration(self) -> dict:
+        """Return the Gemini function-calling schema for this tool."""
         return {
             "name": "search",
             "description": (
@@ -163,6 +166,7 @@ class SearchTool(BaseTool):
 
     @staticmethod
     def _extract_args(args: dict) -> tuple[str, str]:
+        """Validate and return (query, language) from the args dict."""
         query = args.get("query")
         if query is None:
             raise ToolArgumentError(

@@ -1,4 +1,5 @@
 """
+tools/tool_registry.py
 
 Implements the ToolRegistry — a Factory/Registry that manages all tools
 available to the agent.
@@ -75,6 +76,7 @@ class ToolRegistry:
     """
 
     def __init__(self) -> None:
+        """Initialise an empty registry."""
         # Internal store: tool name → BaseTool instance
         self._tools: dict[str, BaseTool] = {}
 

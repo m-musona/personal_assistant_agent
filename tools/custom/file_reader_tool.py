@@ -1,4 +1,5 @@
 """
+tools/custom/file_reader_tool.py
 
 FileReaderTool (custom #2) — reads a local plain-text file and returns its
 content to the agent.
@@ -126,6 +127,7 @@ class FileReaderTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "file_reader"
 
     # ------------------------------------------------------------------
@@ -168,6 +170,7 @@ class FileReaderTool(BaseTool):
         return self._format_output(resolved, content)
 
     def get_declaration(self) -> dict:
+        """Return the Gemini function-calling schema for this tool."""
         extensions = ", ".join(sorted(ALLOWED_EXTENSIONS))
         return {
             "name": "file_reader",

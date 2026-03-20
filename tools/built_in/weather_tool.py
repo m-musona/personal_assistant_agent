@@ -1,4 +1,5 @@
 """
+tools/built_in/weather_tool.py
 
 WeatherTool — fetches current weather for a city using wttr.in (no API key
 required) with an optional fallback to OpenWeatherMap when
@@ -78,6 +79,7 @@ class WeatherTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "weather"
 
     # ------------------------------------------------------------------
@@ -121,6 +123,7 @@ class WeatherTool(BaseTool):
         return self._format_weather(location, data)
 
     def get_declaration(self) -> dict:
+        """Return the Gemini function-calling schema for this tool."""
         return {
             "name": "weather",
             "description": (
@@ -393,6 +396,7 @@ class WeatherTool(BaseTool):
 
         # Format temperatures as integers when they are whole numbers.
         def fmt_temp(t: float) -> str:
+            """Format a temperature float, omitting the decimal for whole values."""
             return f"{int(t)}{unit}" if t == int(t) else f"{t:.1f}{unit}"
 
         return (

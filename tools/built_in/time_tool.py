@@ -1,4 +1,5 @@
 """
+tools/built_in/time_tool.py
 
 TimeTool — returns the current date and time, optionally for a named
 timezone.
@@ -154,6 +155,7 @@ class TimeTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "time"
 
     # ------------------------------------------------------------------
@@ -193,6 +195,7 @@ class TimeTool(BaseTool):
         return self._format_output(now, tz_label, tz_arg)
 
     def get_declaration(self) -> dict:
+        """Return the Gemini function-calling schema for this tool."""
         return {
             "name": "time",
             "description": (

@@ -1,4 +1,5 @@
 """
+main.py
 
 Entry point and CLI for the Personal Assistant Agent.
 
@@ -205,7 +206,7 @@ def build_registry() -> ToolRegistry:
         WeatherTool(),  # current weather via wttr.in / OpenWeatherMap
         SearchTool(),  # Wikipedia + DuckDuckGo instant answers
         TimeTool(),  # current date/time with timezone support
-        # # ── Custom (2 required by assignment) ────────────────────────────
+        # ── Custom (2 required by assignment) ────────────────────────────
         TranslateTool(),  # text translation via MyMemory / LibreTranslate
         FileReaderTool(),  # sandboxed local plain-text file reader
     ]
@@ -260,6 +261,7 @@ def _print_history(agent: Agent) -> None:
 
 
 def _print_reset_confirmation() -> None:
+    """Print a bordered confirmation message after a session reset."""
     print(f"\n{_DIVIDER}")
     print("  History cleared. Starting a fresh conversation.")
     print(f"{_DIVIDER}\n")

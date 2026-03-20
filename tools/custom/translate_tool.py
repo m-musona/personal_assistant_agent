@@ -1,4 +1,5 @@
 """
+tools/custom/translate_tool.py
 
 TranslateTool (custom #1) — translates text using a two-backend cascade:
 
@@ -165,6 +166,7 @@ class TranslateTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "translate"
 
     # ------------------------------------------------------------------
@@ -212,6 +214,7 @@ class TranslateTool(BaseTool):
         return result
 
     def get_declaration(self) -> dict:
+        """Return the Gemini function-calling schema for this tool."""
         return {
             "name": "translate",
             "description": (

@@ -1,4 +1,5 @@
 """
+tools/built_in/calculator_tool.py
 
 A safe arithmetic calculator tool for the agent.
 
@@ -159,6 +160,7 @@ class CalculatorTool(BaseTool):
 
     @property
     def name(self) -> str:
+        """Return the unique tool identifier used by ToolRegistry."""
         return "calculator"
 
     # ------------------------------------------------------------------
