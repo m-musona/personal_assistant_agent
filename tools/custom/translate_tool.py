@@ -1,5 +1,4 @@
 """
-tools/custom/translate_tool.py
 
 TranslateTool (custom #1) — translates text using a two-backend cascade:
 

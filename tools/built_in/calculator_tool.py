@@ -1,5 +1,4 @@
 """
-tools/built_in/calculator_tool.py
 
 A safe arithmetic calculator tool for the agent.
 

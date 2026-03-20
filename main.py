@@ -1,5 +1,4 @@
 """
-main.py
 
 Entry point and CLI for the Personal Assistant Agent.
 

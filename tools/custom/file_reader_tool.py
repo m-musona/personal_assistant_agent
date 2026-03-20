@@ -1,5 +1,4 @@
 """
-tools/custom/file_reader_tool.py
 
 FileReaderTool (custom #2) — reads a local plain-text file and returns its
 content to the agent.

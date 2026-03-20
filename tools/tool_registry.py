@@ -1,5 +1,4 @@
 """
-tools/tool_registry.py
 
 Implements the ToolRegistry — a Factory/Registry that manages all tools
 available to the agent.

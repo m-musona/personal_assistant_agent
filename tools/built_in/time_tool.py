@@ -1,5 +1,4 @@
 """
-tools/built_in/time_tool.py
 
 TimeTool — returns the current date and time, optionally for a named
 timezone.

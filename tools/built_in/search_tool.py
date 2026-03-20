@@ -1,5 +1,4 @@
 """
-tools/built_in/search_tool.py
 
 SearchTool — retrieves a concise summary for a query using two backends
 in a priority cascade:
