@@ -1,0 +1,34 @@
+08:07:30 [INFO] __main__: Starting Personal Assistant Agent.
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'calculator'
+08:07:30 [DEBUG] __main__: Registered tool: 'calculator'
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'weather'
+08:07:30 [DEBUG] __main__: Registered tool: 'weather'
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'search'
+08:07:30 [DEBUG] __main__: Registered tool: 'search'
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'time'
+08:07:30 [DEBUG] __main__: Registered tool: 'time'
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'translate'
+08:07:30 [DEBUG] __main__: Registered tool: 'translate'
+08:07:30 [DEBUG] tools.tool_registry: Registered tool: 'file_reader'
+08:07:30 [DEBUG] __main__: Registered tool: 'file_reader'
+08:07:30 [INFO] __main__: ToolRegistry ready — 6 tool(s): calculator, file_reader, search, time, translate, weather
+08:07:30 [INFO] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:07:30 [DEBUG] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:07:30 [DEBUG] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:08:28 [INFO] __main__: Starting Personal Assistant Agent.
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'calculator'
+08:08:28 [DEBUG] __main__: Registered tool: 'calculator'
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'weather'
+08:08:28 [DEBUG] __main__: Registered tool: 'weather'
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'search'
+08:08:28 [DEBUG] __main__: Registered tool: 'search'
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'time'
+08:08:28 [DEBUG] __main__: Registered tool: 'time'
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'translate'
+08:08:28 [DEBUG] __main__: Registered tool: 'translate'
+08:08:28 [DEBUG] tools.tool_registry: Registered tool: 'file_reader'
+08:08:28 [DEBUG] __main__: Registered tool: 'file_reader'
+08:08:28 [INFO] __main__: ToolRegistry ready — 6 tool(s): calculator, file_reader, search, time, translate, weather
+08:08:28 [INFO] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:08:28 [DEBUG] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:08:28 [DEBUG] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
