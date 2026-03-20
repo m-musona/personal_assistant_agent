@@ -209,10 +209,12 @@ class CalculatorTool(BaseTool):
                 "computing mentally."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "expression": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "A valid Python arithmetic expression to evaluate. "
                             "Examples: '2 + 2', '(100 / 4) * 3', '2 ** 10', "

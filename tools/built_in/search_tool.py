@@ -129,10 +129,12 @@ class SearchTool(BaseTool):
                 "your training. Do not use this for calculations or weather."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "query": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "The topic or question to search for. "
                             "Use clear, specific terms. "
@@ -142,7 +144,8 @@ class SearchTool(BaseTool):
                         ),
                     },
                     "language": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "Wikipedia language edition to search. "
                             "Use a BCP-47 code such as 'en', 'fr', 'de', 'es'. "

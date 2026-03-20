@@ -130,10 +130,12 @@ class WeatherTool(BaseTool):
                 "about weather, temperature, or climate in a specific place."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "city": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "Name of the city to get weather for. "
                             "Use the most common English name "
@@ -142,7 +144,8 @@ class WeatherTool(BaseTool):
                         ),
                     },
                     "country": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "Optional ISO 3166-1 alpha-2 country code to "
                             "disambiguate cities with common names "

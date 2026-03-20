@@ -179,10 +179,12 @@ class FileReaderTool(BaseTool):
                 "analyse a local file."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "filepath": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "Path to the file to read. Can be relative to the "
                             "base directory (e.g. 'notes.txt', 'data/report.csv') "

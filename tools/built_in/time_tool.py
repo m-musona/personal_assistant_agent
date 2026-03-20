@@ -205,10 +205,12 @@ class TimeTool(BaseTool):
                 "Use this whenever the user asks what time or date it is."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "timezone": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "Optional timezone identifier. "
                             "Examples: 'UTC', 'Europe/Paris', 'JST', 'Tokyo', "

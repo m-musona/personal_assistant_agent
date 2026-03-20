@@ -223,17 +223,20 @@ class TranslateTool(BaseTool):
                 "a phrase means in another language."
             ),
             "parameters": {
-                "type": "object",
+                # "type": "object",
+                "type": "OBJECT",
                 "properties": {
                     "text": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "The text to translate. Can be a word, phrase, "
                             "sentence, or short paragraph."
                         ),
                     },
                     "target_language": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "The language to translate into. "
                             "Use a full name ('French') or ISO 639-1 code ('fr'). "
@@ -241,7 +244,8 @@ class TranslateTool(BaseTool):
                         ),
                     },
                     "source_language": {
-                        "type": "string",
+                        # "type": "string",
+                        "type": "STRING",
                         "description": (
                             "The language of the input text. "
                             "Omit to let the API detect it automatically. "

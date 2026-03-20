@@ -1,0 +1,296 @@
+08:31:20 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'weather'
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'search'
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'time'
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'translate'
+08:31:20 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:31:20 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:31:20 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:31:20 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:31:20 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:31:20 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:38:19 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'weather'
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'search'
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'time'
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'translate'
+08:38:19 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:38:19 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:38:19 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:38:19 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:38:19 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:38:19 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:41:44 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'weather'
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'search'
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'time'
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'translate'
+08:41:44 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:41:44 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:41:44 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:41:44 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:41:44 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:41:44 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:44:41 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'weather'
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'search'
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'time'
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'translate'
+08:44:41 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:44:41 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:44:41 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:44:41 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:44:41 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:44:41 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:44:50 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:44:50 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:44:50 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:44:50 [INFO    ] __main__: Registry ready — 1 tools: calculator
+08:44:50 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:44:50 [DEBUG   ] agent.prompt_builder: Built system prompt — 2520 chars, 1 tools.
+08:44:50 [DEBUG   ] agent.agent: System prompt ready -- 2520 chars, 1 tool(s).
+08:44:50 [INFO    ] agent.agent: GenerativeModel ready -- 1 tool declaration(s) attached.
+08:44:50 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:44:50 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:44:50 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:44:54 [INFO    ] __main__: Agent shut down cleanly.
+08:44:54 [INFO    ] __main__: Session ended.
+08:45:01 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:45:01 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:45:01 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:45:01 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:45:01 [DEBUG   ] __main__: Registered tool: 'weather'
+08:45:01 [INFO    ] __main__: Registry ready — 2 tools: calculator, weather
+08:45:01 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:45:01 [DEBUG   ] agent.prompt_builder: Built system prompt — 3126 chars, 2 tools.
+08:45:01 [DEBUG   ] agent.agent: System prompt ready -- 3126 chars, 2 tool(s).
+08:45:01 [INFO    ] agent.agent: GenerativeModel ready -- 2 tool declaration(s) attached.
+08:45:01 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:45:01 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:45:01 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:45:03 [INFO    ] __main__: Agent shut down cleanly.
+08:45:03 [INFO    ] __main__: Session ended.
+08:45:09 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:45:09 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:45:09 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:45:09 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:45:09 [DEBUG   ] __main__: Registered tool: 'weather'
+08:45:09 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:45:09 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:45:09 [INFO    ] __main__: Registry ready — 3 tools: calculator, file_reader, weather
+08:45:09 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:45:09 [DEBUG   ] agent.prompt_builder: Built system prompt — 3715 chars, 3 tools.
+08:45:09 [DEBUG   ] agent.agent: System prompt ready -- 3715 chars, 3 tool(s).
+08:45:09 [INFO    ] agent.agent: GenerativeModel ready -- 3 tool declaration(s) attached.
+08:45:09 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:45:09 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:45:09 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:45:11 [INFO    ] __main__: Agent shut down cleanly.
+08:45:11 [INFO    ] __main__: Session ended.
+08:45:17 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:45:17 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:45:17 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:45:17 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:45:17 [DEBUG   ] __main__: Registered tool: 'weather'
+08:45:17 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:45:17 [DEBUG   ] __main__: Registered tool: 'translate'
+08:45:17 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:45:17 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:45:17 [INFO    ] __main__: Registry ready — 4 tools: calculator, file_reader, translate, weather
+08:45:17 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:45:17 [DEBUG   ] agent.prompt_builder: Built system prompt — 4506 chars, 4 tools.
+08:45:17 [DEBUG   ] agent.agent: System prompt ready -- 4506 chars, 4 tool(s).
+08:45:17 [INFO    ] agent.agent: GenerativeModel ready -- 4 tool declaration(s) attached.
+08:45:17 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:45:17 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:45:17 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:45:18 [INFO    ] __main__: Agent shut down cleanly.
+08:45:18 [INFO    ] __main__: Session ended.
+08:45:25 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:45:25 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:45:25 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:45:25 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:45:25 [DEBUG   ] __main__: Registered tool: 'weather'
+08:45:25 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:45:25 [DEBUG   ] __main__: Registered tool: 'time'
+08:45:25 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:45:25 [DEBUG   ] __main__: Registered tool: 'translate'
+08:45:25 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:45:25 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:45:25 [INFO    ] __main__: Registry ready — 5 tools: calculator, file_reader, time, translate, weather
+08:45:25 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:45:25 [DEBUG   ] agent.prompt_builder: Built system prompt — 5035 chars, 5 tools.
+08:45:25 [DEBUG   ] agent.agent: System prompt ready -- 5035 chars, 5 tool(s).
+08:46:05 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'weather'
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'search'
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'time'
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'translate'
+08:46:05 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:46:05 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:46:05 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:46:05 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:46:05 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:46:05 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:46:05 [INFO    ] agent.agent: GenerativeModel ready -- 6 tool declaration(s) attached.
+08:46:05 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:46:05 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:46:05 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:46:12 [INFO    ] agent.agent: User input -- 16 chars.
+08:46:12 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=16
+08:46:12 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+08:46:13 [WARNING ] agent.agent: Gemini API error (attempt 1/3) -- retrying in 1.0s. Error: 400 * GenerateContentRequest.tools[0].function_declarations[0].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[0].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[3].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.required: only allowed for OBJECT type
+
+08:46:14 [WARNING ] agent.agent: Gemini API error (attempt 2/3) -- retrying in 2.0s. Error: 400 * GenerateContentRequest.tools[0].function_declarations[0].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[0].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[3].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.required: only allowed for OBJECT type
+
+08:46:16 [ERROR   ] agent.agent: Gemini API failed after 3 attempts: 400 * GenerateContentRequest.tools[0].function_declarations[0].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[0].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[3].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.required: only allowed for OBJECT type
+
+08:46:16 [ERROR   ] agent.agent: Gemini API unavailable: Gemini API unavailable after 3 attempts. Last error: 400 * GenerateContentRequest.tools[0].function_declarations[0].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[0].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[1].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[2].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[3].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[4].parameters.required: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.properties: only allowed for OBJECT type
+* GenerateContentRequest.tools[0].function_declarations[5].parameters.required: only allowed for OBJECT type
+
+08:46:16 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=1388
+08:46:16 [INFO    ] agent.agent: Turn complete. MemoryManager: 1 groups, 2 turns, cap=20
+08:46:25 [INFO    ] __main__: Agent shut down cleanly.
+08:46:25 [INFO    ] __main__: Session ended.
+08:49:42 [INFO    ] __main__: Starting Personal Assistant Agent.
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'calculator'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'calculator'
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'weather'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'weather'
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'search'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'search'
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'time'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'time'
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'translate'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'translate'
+08:49:42 [DEBUG   ] tools.tool_registry: Registered tool: 'file_reader'
+08:49:42 [DEBUG   ] __main__: Registered tool: 'file_reader'
+08:49:42 [INFO    ] __main__: Registry ready — 6 tools: calculator, file_reader, search, time, translate, weather
+08:49:42 [INFO    ] agent.agent: Gemini SDK configured -- model: 'gemini-2.5-flash'
+08:49:42 [DEBUG   ] agent.prompt_builder: Built system prompt — 5776 chars, 6 tools.
+08:49:42 [DEBUG   ] agent.agent: System prompt ready -- 5776 chars, 6 tool(s).
+08:49:42 [INFO    ] agent.agent: GenerativeModel ready -- 6 tool declaration(s) attached.
+08:49:42 [INFO    ] agent.agent: ChatSession opened -- agent ready.
+08:49:42 [DEBUG   ] observers.logger_observer: LoggerObserver writing to: logs\session.log
+08:49:42 [DEBUG   ] agent.agent: Observer registered: <LoggerObserver path='logs\\session.log' turns=0 tool_calls=0 errors=0>
+08:49:46 [INFO    ] agent.agent: User input -- 16 chars.
+08:49:46 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=16
+08:49:46 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+08:49:47 [INFO    ] agent.agent: Tool call 1/5 -- name='time' args={}
+08:49:47 [DEBUG   ] agent.memory_manager: add_raw_turn role='model' parts=1
+08:49:47 [INFO    ] tools.tool_registry: Executing tool 'time' with args: {}
+08:49:47 [DEBUG   ] tools.tool_registry: Tool 'time' returned: Current local time (FLE Standard Time, UTC +02:00):
+  Date       : Friday, 20 March 2026
+  Time       : 08:49:47
+  UTC offset : +02:00
+08:49:47 [DEBUG   ] agent.agent: Tool 'time' succeeded: Current local time (FLE Standard Time, UTC +02:00):
+  Date       : Friday, 20 March 2026
+  Time       : 08:49:47
+  UTC offset : +02:00
+08:49:47 [DEBUG   ] agent.memory_manager: add_raw_turn role='function' parts=1
+08:49:47 [DEBUG   ] agent.agent: Tool exchange recorded. MemoryManager: 1 groups, 3 turns, cap=20
+08:49:47 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=1).
+08:49:49 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=60
+08:49:49 [INFO    ] agent.agent: Turn complete. MemoryManager: 1 groups, 4 turns, cap=20
+08:49:59 [INFO    ] agent.agent: User input -- 11 chars.
+08:49:59 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=11
+08:49:59 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+08:50:00 [INFO    ] agent.agent: Tool call 1/5 -- name='search' args={'query': 'BTS'}
+08:50:00 [DEBUG   ] agent.memory_manager: add_raw_turn role='model' parts=1
+08:50:00 [INFO    ] tools.tool_registry: Executing tool 'search' with args: {'query': 'BTS'}
+08:50:01 [DEBUG   ] tools.tool_registry: Tool 'search' returned: BTS — South Korean boy band
+
+BTS, also known as the Bangtan Boys, is a South Korean boy band formed in 2010. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook, who co-write or co-produce much of their material. Originally a hip hop group, they expanded their musical style to incorporate a wide range of genres, while their lyrics have focused on subjects including mental health, the troubles of school-age youth and coming of age, loss, the journey towards self-love, individualism and the consequences of fame and recognition. Their discography and adjacent work has also referenced literature, philosophy…
+
+Source: https://en.wikipedia.org/wiki/BTS
+08:50:01 [DEBUG   ] agent.agent: Tool 'search' succeeded: BTS — South Korean boy band
+
+BTS, also known as the Bangtan Boys, is a South Korean boy band formed in 2010. The band consists of Jin, Suga, J-Hope, RM, Jimin, V, and Jung Kook, who co-write or co-produce much of their material. Originally a hip hop group, they expanded their musical style to incorporate a wide range of genres, while their lyrics have focused on subjects including mental health, the troubles of school-age youth and coming of age, loss, the journey towards self-love, individualism and the consequences of fame and recognition. Their discography and adjacent work has also referenced literature, philosophy…
+
+Source: https://en.wikipedia.org/wiki/BTS
+08:50:01 [DEBUG   ] agent.memory_manager: add_raw_turn role='function' parts=1
+08:50:01 [DEBUG   ] agent.agent: Tool exchange recorded. MemoryManager: 2 groups, 7 turns, cap=20
+08:50:01 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=1).
+08:50:02 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=347
+08:50:02 [INFO    ] agent.agent: Turn complete. MemoryManager: 2 groups, 8 turns, cap=20
+08:50:16 [INFO    ] agent.agent: User input -- 24 chars.
+08:50:16 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=24
+08:50:16 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+08:50:17 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=32
+08:50:17 [INFO    ] agent.agent: Turn complete. MemoryManager: 3 groups, 10 turns, cap=20
+08:50:37 [INFO    ] agent.agent: User input -- 28 chars.
+08:50:37 [DEBUG   ] agent.memory_manager: add_turn role='user' chars=28
+08:50:37 [DEBUG   ] agent.agent: Sending to Gemini (tool_calls_so_far=0).
+08:50:38 [DEBUG   ] agent.memory_manager: add_turn role='model' chars=127
+08:50:38 [INFO    ] agent.agent: Turn complete. MemoryManager: 4 groups, 12 turns, cap=20
+08:50:53 [INFO    ] __main__: Agent shut down cleanly.
+08:50:53 [INFO    ] __main__: Session ended.
