@@ -59,10 +59,9 @@ from tools.custom.translate_tool import TranslateTool
 from tools.custom.file_reader_tool import FileReaderTool
 
 # ---------------------------------------------------------------------------
-# (Optional — Phase 6) Observer
-# Uncomment once observers/logger_observer.py is implemented:
-# from observers.logger_observer import LoggerObserver
+# Observer
 # ---------------------------------------------------------------------------
+from observers.logger_observer import LoggerObserver
 
 
 # ---------------------------------------------------------------------------
@@ -269,8 +268,8 @@ def main() -> None:
     registry = build_registry()
     agent = Agent(registry)
 
-    # ── Phase 6: attach the observer once LoggerObserver is implemented ──
-    # agent.add_observer(LoggerObserver())
+    # Attach the LoggerObserver — writes timestamped entries to logs/session.log.
+    agent.add_observer(LoggerObserver())
 
     run_repl(agent, registry)
     logger.info("Session ended.")
